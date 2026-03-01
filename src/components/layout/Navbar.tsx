@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, ChevronDown } from "lucide-react";
 import { navLinks, contactLinks } from "@/lib/constants";
 import { navbarVariants } from "@/lib/animations";
@@ -37,8 +38,15 @@ export default function Navbar() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
-              <span className="text-xl font-bold text-primary">
+            <Link href="/" className="flex-shrink-0 flex items-center gap-2">
+              <Image
+                src="/images/logo.png"
+                alt="Instituto Rede de Apoio"
+                width={40}
+                height={40}
+                className="h-10 w-auto"
+              />
+              <span className="text-lg font-bold text-primary">
                 Instituto Rede
               </span>
             </Link>

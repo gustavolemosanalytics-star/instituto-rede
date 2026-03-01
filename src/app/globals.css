@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #0A2540;
-  --primary-light: #1A3A5C;
-  --accent: #00C9A7;
-  --accent-hover: #00B396;
-  --neutral-50: #FAFBFC;
+  --primary: #0C4DA2;
+  --primary-light: #1E73BE;
+  --accent: #3FAE49;
+  --accent-hover: #2E9438;
+  --brand-blue: #41B6E6;
+  --brand-red: #E63329;
+  --brand-yellow: #FDB913;
+  --brand-green: #3FAE49;
+  --neutral-50: #F8FAFC;
   --neutral-100: #F1F5F9;
   --neutral-200: #E2E8F0;
   --neutral-600: #475569;
@@ -20,6 +24,10 @@
   --color-primary-light: var(--primary-light);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-red: var(--brand-red);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-green: var(--brand-green);
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);

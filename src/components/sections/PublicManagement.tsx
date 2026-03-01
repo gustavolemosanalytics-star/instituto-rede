@@ -9,7 +9,7 @@ export default function PublicManagement() {
   return (
     <section className="relative py-20 md:py-28 px-6 bg-primary text-white overflow-hidden">
       {/* Subtle radial gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(0,201,167,0.15)_0%,_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(65,182,230,0.15)_0%,_transparent_60%)]" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         <motion.div

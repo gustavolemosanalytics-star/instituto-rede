@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export default function CTABanner() {
   return (
-    <section className="py-20 md:py-28 px-6 bg-gradient-to-r from-accent to-accent-hover">
+    <section className="py-20 md:py-28 px-6 bg-gradient-to-r from-primary to-primary-light">
       <div className="max-w-4xl mx-auto text-center">
         <FadeInUp>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
@@ -17,7 +17,7 @@ export default function CTABanner() {
           <Button
             variant="secondary"
             href="/contato"
-            className="bg-white text-accent border-white hover:bg-white/90 hover:text-accent"
+            className="bg-brand-yellow text-primary border-brand-yellow hover:bg-brand-yellow/90 hover:text-primary"
           >
             Fale Conosco
           </Button>

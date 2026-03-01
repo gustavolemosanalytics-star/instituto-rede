@@ -9,21 +9,26 @@ import Button from "@/components/ui/Button";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-primary-light noise-bg">
-      {/* Floating decorative circles */}
+      {/* Floating decorative circles with brand colors */}
       <motion.div
-        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-accent/10 blur-3xl"
+        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-brand-blue/15 blur-3xl"
         animate={{ y: [0, -20, 0] }}
         transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-32 right-16 w-80 h-80 rounded-full bg-accent/5 blur-3xl"
+        className="absolute bottom-32 right-16 w-80 h-80 rounded-full bg-brand-yellow/10 blur-3xl"
         animate={{ y: [0, -20, 0] }}
         transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-white/5 blur-2xl"
+        className="absolute top-1/2 left-1/3 w-40 h-40 rounded-full bg-brand-green/10 blur-2xl"
         animate={{ y: [0, -20, 0] }}
         transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-40 right-1/4 w-48 h-48 rounded-full bg-brand-red/8 blur-3xl"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
       />
 
       {/* Main content */}

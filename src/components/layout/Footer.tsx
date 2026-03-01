@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import { navLinks, offices } from "@/lib/constants";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -31,7 +32,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Column 1: Logo + Description */}
           <motion.div variants={fadeInUp}>
-            <h3 className="text-2xl font-bold mb-4">Instituto Rede</h3>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/images/logo.png"
+                alt="Instituto Rede de Apoio"
+                width={48}
+                height={48}
+                className="h-12 w-auto brightness-0 invert"
+              />
+              <h3 className="text-2xl font-bold">Instituto Rede</h3>
+            </div>
             <p className="text-white/70 text-sm leading-relaxed">
               Ha mais de 20 anos transformando desafios em solucoes para a gestao
               publica e o desenvolvimento social no Brasil.
