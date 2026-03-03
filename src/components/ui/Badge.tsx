@@ -6,8 +6,9 @@ interface BadgeProps {
 export default function Badge({ children, className = "" }: BadgeProps) {
   return (
     <span
-      className={`inline-block uppercase text-xs font-medium tracking-widest bg-accent/10 text-accent px-3 py-1 rounded-full ${className}`}
+      className={`inline-flex items-center gap-3 uppercase text-xs font-medium tracking-[0.2em] text-accent ${className}`}
     >
+      <span className="w-8 h-px bg-accent" />
       {children}
     </span>
   );

@@ -28,8 +28,8 @@ export default function Navbar() {
     <>
       <div className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 pt-3">
         <motion.header
-          className={`mx-auto max-w-7xl rounded-2xl bg-white/90 backdrop-blur-lg transition-shadow duration-300 ${
-            isScrolled ? "shadow-lg" : "shadow-md"
+          className={`mx-auto max-w-7xl rounded-2xl bg-white transition-shadow duration-300 ${
+            isScrolled ? "shadow-md" : "shadow-sm"
           }`}
           variants={navbarVariants}
           initial="hidden"

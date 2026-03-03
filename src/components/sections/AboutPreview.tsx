@@ -1,26 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Building2 } from "lucide-react";
 import { slideFromLeft, slideFromRight } from "@/lib/animations";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 
 export default function AboutPreview() {
   return (
-    <section className="py-20 md:py-28 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left: Text content (60%) */}
+    <section className="py-28 md:py-36 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+          {/* Left: Text content */}
           <motion.div
-            className="w-full lg:w-[60%]"
+            className="lg:col-span-7"
             variants={slideFromLeft}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <Badge className="mb-4">Sobre Nós</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
+            <Badge className="mb-6">Sobre Nós</Badge>
+            <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl leading-tight mb-8">
               Construindo pontes entre desafios e soluções
             </h2>
             <p className="text-neutral-600 leading-relaxed mb-4">
@@ -30,7 +29,7 @@ export default function AboutPreview() {
               parceiros estratégicos de governos municipais e estaduais, oferecendo
               soluções integradas que geram impacto real nas comunidades.
             </p>
-            <p className="text-neutral-600 leading-relaxed mb-8">
+            <p className="text-neutral-600 leading-relaxed mb-10">
               Nossa equipe multidisciplinar combina conhecimento técnico,
               inovação e compromisso com resultados para transformar a realidade
               da administração pública brasileira.
@@ -40,21 +39,23 @@ export default function AboutPreview() {
             </Button>
           </motion.div>
 
-          {/* Right: Decorative image placeholder (40%) */}
+          {/* Right: Pull quote */}
           <motion.div
-            className="w-full lg:w-[40%]"
+            className="lg:col-span-5 lg:pt-16"
             variants={slideFromRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <div className="relative rounded-[2rem] bg-gradient-to-br from-accent/20 to-primary/20 aspect-[4/5] flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
-              <Building2
-                size={120}
-                className="text-primary/30"
-                strokeWidth={1}
-              />
+            <div className="border-l-2 border-accent pl-8">
+              <span className="font-heading text-6xl text-accent/30 leading-none block mb-2">&ldquo;</span>
+              <p className="font-heading text-2xl md:text-3xl leading-snug text-primary italic">
+                Promover ações de educação, saúde e esporte como instrumentos
+                de desenvolvimento humano e inclusão social.
+              </p>
+              <p className="mt-6 text-sm text-neutral-600 tracking-wide uppercase">
+                Nossa Missão
+              </p>
             </div>
           </motion.div>
         </div>

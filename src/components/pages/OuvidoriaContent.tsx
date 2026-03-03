@@ -82,13 +82,13 @@ export default function OuvidoriaContent() {
 
   return (
     <>
-      <PageHero title="Ouvidoria e Canal de Integridade" breadcrumb="Ouvidoria e Canal de Integridade" />
+      <PageHero title="Ouvidoria e Canal de Integridade" breadcrumb="Ouvidoria" />
 
       {/* Introduction */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeInUp>
-            <div className="max-w-4xl mx-auto text-neutral-600 leading-relaxed">
+            <div className="max-w-3xl text-neutral-600 leading-relaxed">
               <p>
                 O Instituto Rede de Apoio mantém canal permanente de Ouvidoria e
                 Integridade destinado ao recebimento de manifestações, sugestões,
@@ -102,15 +102,15 @@ export default function OuvidoriaContent() {
       </section>
 
       {/* Finalidade e Canal */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <FadeInUp>
               <Card className="h-full">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <ShieldCheck className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Finalidade da Ouvidoria
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -127,7 +127,7 @@ export default function OuvidoriaContent() {
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <Lock className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Canal de Integridade
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -144,8 +144,8 @@ export default function OuvidoriaContent() {
       </section>
 
       {/* Garantias ao Manifestante */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Garantias ao Manifestante"
             subtitle="Asseguramos tratamento ético e confidencial a todas as manifestações."
@@ -167,12 +167,12 @@ export default function OuvidoriaContent() {
       </section>
 
       {/* Fluxo e Prazo */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <FadeInUp>
               <Card className="h-full">
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Fluxo de Tratamento
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -190,7 +190,7 @@ export default function OuvidoriaContent() {
               <Card className="h-full">
                 <div className="flex items-center gap-3 mb-3">
                   <Clock className="w-6 h-6 text-accent" />
-                  <h3 className="text-xl font-bold text-primary">
+                  <h3 className="font-heading text-xl text-primary">
                     Prazo de Resposta
                   </h3>
                 </div>
@@ -208,15 +208,15 @@ export default function OuvidoriaContent() {
       </section>
 
       {/* Formulário */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Registrar Manifestação"
             subtitle="Preencha o formulário abaixo para registrar sua manifestação."
           />
 
           <FadeInUp>
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 mt-8">
+            <div className="max-w-2xl mx-auto bg-white rounded-xl p-8 border border-neutral-200 mt-8">
               {submitted ? (
                 <div className="text-center py-12">
                   <CheckCircle className="w-16 h-16 text-accent mx-auto mb-4" />

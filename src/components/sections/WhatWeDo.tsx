@@ -1,40 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { differentials } from "@/lib/constants";
-import StaggerContainer from "@/components/animations/StaggerContainer";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 
 export default function WhatWeDo() {
   return (
-    <section className="py-20 md:py-28 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-28 md:py-36 px-6">
+      <div className="max-w-7xl mx-auto">
         <SectionHeading
           title="O Que Fazemos"
           subtitle="Conheça os diferenciais que nos tornam referência em apoio à gestão pública"
-          animated
         />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {differentials.map((item) => {
-            const Icon = item.icon;
-            return (
-              <motion.div key={item.title} variants={fadeInUp}>
-                <Card className="h-full">
-                  <div className="flex flex-col gap-4">
-                    <Icon size={32} className="text-accent" />
-                    <h3 className="font-semibold text-lg">{item.title}</h3>
-                    <p className="text-neutral-600 text-sm">
-                      {item.description}
-                    </p>
-                  </div>
-                </Card>
-              </motion.div>
-            );
-          })}
-        </StaggerContainer>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="mt-16"
+        >
+          {differentials.map((item, i) => (
+            <motion.div
+              key={item.title}
+              variants={fadeInUp}
+              className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-8 border-b border-neutral-200 last:border-b-0"
+            >
+              <div className="md:col-span-1">
+                <span className="font-heading text-3xl text-accent/60">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="md:col-span-4">
+                <h3 className="font-heading text-2xl">{item.title}</h3>
+              </div>
+              <div className="md:col-span-7">
+                <p className="text-neutral-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

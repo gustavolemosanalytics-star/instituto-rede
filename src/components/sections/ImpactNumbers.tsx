@@ -53,17 +53,22 @@ function AnimeCounter({
 
 export default function ImpactNumbers() {
   return (
-    <section className="py-20 md:py-28 px-6 bg-neutral-50">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {impactNumbers.map((item) => (
-            <div key={item.label} className="text-center">
+    <section className="py-28 md:py-36 px-6 border-t border-neutral-200">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+          {impactNumbers.map((item, i) => (
+            <div
+              key={item.label}
+              className={`text-center ${
+                i < impactNumbers.length - 1 ? "md:border-r md:border-neutral-200" : ""
+              }`}
+            >
               <AnimeCounter
                 value={item.value}
                 suffix={item.suffix}
-                className="text-4xl md:text-5xl font-bold text-primary"
+                className="text-5xl md:text-7xl font-light text-primary tabular-nums"
               />
-              <p className="mt-2 text-neutral-600 text-sm md:text-base">
+              <p className="mt-3 text-neutral-600 text-xs md:text-sm tracking-wide uppercase">
                 {item.label}
               </p>
             </div>

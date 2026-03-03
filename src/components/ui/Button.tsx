@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "accent" | "ghost";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -13,13 +13,14 @@ interface ButtonProps {
 }
 
 const variantStyles = {
-  primary: "bg-accent text-white hover:bg-accent-hover hover:scale-[1.02] hover:shadow-lg",
-  secondary: "border-2 border-accent text-accent hover:bg-accent hover:text-white",
-  ghost: "text-accent hover:underline underline-offset-4",
+  primary: "bg-primary text-white hover:bg-primary-light",
+  secondary: "border border-primary text-primary hover:bg-primary/5",
+  accent: "bg-accent text-white hover:bg-accent-hover",
+  ghost: "text-primary hover:text-accent",
 };
 
 export default function Button({ children, variant = "primary", href, onClick, type = "button", className = "", disabled = false }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ease-out disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseStyles = "inline-flex items-center justify-center gap-2 px-7 py-3 rounded-md text-sm font-medium tracking-wide transition-all duration-300 ease-out disabled:opacity-50 disabled:cursor-not-allowed";
   const styles = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   if (href) {

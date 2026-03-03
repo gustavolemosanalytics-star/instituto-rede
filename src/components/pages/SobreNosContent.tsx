@@ -2,24 +2,13 @@
 
 import { motion } from "framer-motion";
 import {
-  Target,
-  Eye,
-  Heart,
   FileText,
   Download,
-  Scale,
-  Users,
-  ShieldCheck,
-  Landmark,
-  ClipboardList,
 } from "lucide-react";
-import { fadeInUp, slideFromLeft, slideFromRight } from "@/lib/animations";
+import { fadeInUp, slideFromLeft, slideFromRight, staggerContainer } from "@/lib/animations";
 import FadeInUp from "@/components/animations/FadeInUp";
-import StaggerContainer from "@/components/animations/StaggerContainer";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Card from "@/components/ui/Card";
 import PageHero from "@/components/shared/PageHero";
-import WaveDivider from "@/components/shared/WaveDivider";
 
 const valores = [
   "Ética",
@@ -37,6 +26,25 @@ const principios = [
   "Eficiência",
   "Transparência",
   "Controle social",
+];
+
+const estrutura = [
+  {
+    title: "Assembleia Geral",
+    description: "Órgão máximo de deliberação, responsável por decidir sobre matérias institucionais relevantes e eleger membros dos órgãos de administração e fiscalização.",
+  },
+  {
+    title: "Conselho de Administração",
+    description: "Exerce função estratégica e de supervisão institucional, definindo diretrizes gerais de atuação e fiscalizando a Diretoria Executiva.",
+  },
+  {
+    title: "Diretoria Executiva",
+    description: "Responsável pela administração e gestão cotidiana, executando diretrizes, administrando recursos e coordenando programas e projetos.",
+  },
+  {
+    title: "Conselho Fiscal",
+    description: "Atua como órgão de fiscalização e controle interno, examinando livros contábeis e emitindo parecer sobre demonstrações financeiras.",
+  },
 ];
 
 const documentosInstitucionais = [
@@ -57,19 +65,20 @@ export default function SobreNosContent() {
       <PageHero title="Institucional" breadcrumb="Institucional" />
 
       {/* O Instituto */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-12 gap-16 items-start">
             <motion.div
+              className="lg:col-span-7"
               variants={slideFromLeft}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-primary mb-8 leading-tight">
                 O Instituto Rede de Apoio
               </h2>
-              <div className="space-y-4 text-neutral-600 leading-relaxed">
+              <div className="space-y-5 text-neutral-600 leading-relaxed">
                 <p>
                   O Instituto Rede de Apoio é uma associação privada sem fins
                   lucrativos, constituída em 1998, com atuação voltada à
@@ -86,14 +95,16 @@ export default function SobreNosContent() {
             </motion.div>
 
             <motion.div
+              className="lg:col-span-5 lg:pt-8"
               variants={slideFromRight}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              className="relative"
             >
-              <div className="w-full h-80 lg:h-[400px] rounded-2xl bg-gradient-to-br from-accent/20 via-primary/10 to-accent/5 relative overflow-hidden flex items-center justify-center">
-                <Landmark size={100} className="text-primary/20" strokeWidth={1} />
+              <div className="border-l-2 border-accent pl-8 space-y-6">
+                <p className="font-heading text-2xl text-primary italic leading-snug">
+                  &ldquo;Promovendo educação, saúde e esporte com responsabilidade social desde 1998.&rdquo;
+                </p>
               </div>
             </motion.div>
           </div>
@@ -101,77 +112,72 @@ export default function SobreNosContent() {
       </section>
 
       {/* Missão / Visão / Valores */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Missão, Visão e Valores"
             subtitle="Os pilares que guiam nossa atuação e definem quem somos."
           />
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-8 mt-12">
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                  <Target className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Missão</h3>
+          <motion.div
+            className="mt-16 space-y-0"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-12 gap-6 py-10 border-b border-neutral-200">
+              <div className="md:col-span-3">
+                <h3 className="font-heading text-2xl text-primary">Missão</h3>
+              </div>
+              <div className="md:col-span-9">
                 <p className="text-neutral-600 leading-relaxed">
                   Promover ações de educação, saúde e esporte como instrumentos
                   de desenvolvimento humano e inclusão social.
                 </p>
-              </Card>
+              </div>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                  <Eye className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Visão</h3>
+            <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-12 gap-6 py-10 border-b border-neutral-200">
+              <div className="md:col-span-3">
+                <h3 className="font-heading text-2xl text-primary">Visão</h3>
+              </div>
+              <div className="md:col-span-9">
                 <p className="text-neutral-600 leading-relaxed">
                   Consolidar-se como organização de referência na execução de
                   projetos de interesse público.
                 </p>
-              </Card>
+              </div>
             </motion.div>
 
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                  <Heart className="w-7 h-7 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
-                  Valores
-                </h3>
-                <ul className="text-neutral-600 space-y-2">
+            <motion.div variants={fadeInUp} className="grid grid-cols-1 md:grid-cols-12 gap-6 py-10">
+              <div className="md:col-span-3">
+                <h3 className="font-heading text-2xl text-primary">Valores</h3>
+              </div>
+              <div className="md:col-span-9">
+                <div className="flex flex-wrap gap-3">
                   {valores.map((valor) => (
-                    <li
-                      key={valor}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span key={valor} className="px-4 py-2 text-sm border border-neutral-200 rounded-full text-neutral-600">
                       {valor}
-                    </li>
+                    </span>
                   ))}
-                </ul>
-              </Card>
+                </div>
+              </div>
             </motion.div>
-          </StaggerContainer>
+          </motion.div>
         </div>
       </section>
 
-      <WaveDivider className="text-neutral-50 -mt-1" flip />
-
       {/* Natureza Jurídica */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Natureza Jurídica e Fundamentação Legal"
             subtitle="Base legal que sustenta a atuação do Instituto."
           />
 
           <FadeInUp>
-            <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed mt-8">
+            <div className="max-w-4xl space-y-5 text-neutral-600 leading-relaxed mt-8">
               <p>
                 O Instituto Rede de Apoio é pessoa jurídica de direito privado,
                 constituída sob a forma de associação civil sem fins lucrativos,
@@ -199,15 +205,15 @@ export default function SobreNosContent() {
       </section>
 
       {/* Finalidades Estatutárias */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Finalidades Estatutárias"
             subtitle="Objetivos institucionais previstos no Estatuto Social."
           />
 
           <FadeInUp>
-            <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed mt-8">
+            <div className="max-w-4xl space-y-5 text-neutral-600 leading-relaxed mt-8">
               <p>
                 Nos termos do Estatuto Social, o Instituto Rede de Apoio tem por
                 finalidade promover ações de interesse público voltadas ao
@@ -233,140 +239,106 @@ export default function SobreNosContent() {
       </section>
 
       {/* Estrutura Organizacional */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Estrutura Organizacional"
             subtitle="Modelo de governança baseado na colegialidade e transparência."
           />
 
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-primary mb-2">
-                  Assembleia Geral
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            {estrutura.map((item, i) => (
+              <motion.div key={item.title} variants={fadeInUp} className="border-t-2 border-accent pt-6">
+                <span className="text-sm text-accent font-medium">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-heading text-xl text-primary mt-2 mb-3">
+                  {item.title}
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
-                  Órgão máximo de deliberação, responsável por decidir sobre
-                  matérias institucionais relevantes e eleger membros dos órgãos
-                  de administração e fiscalização.
+                  {item.description}
                 </p>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <Scale className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-primary mb-2">
-                  Conselho de Administração
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Exerce função estratégica e de supervisão institucional,
-                  definindo diretrizes gerais de atuação e fiscalizando a
-                  Diretoria Executiva.
-                </p>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <ClipboardList className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-primary mb-2">
-                  Diretoria Executiva
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Responsável pela administração e gestão cotidiana, executando
-                  diretrizes, administrando recursos e coordenando programas e
-                  projetos.
-                </p>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Card className="h-full text-center">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <ShieldCheck className="w-6 h-6 text-accent" />
-                </div>
-                <h3 className="text-lg font-bold text-primary mb-2">
-                  Conselho Fiscal
-                </h3>
-                <p className="text-neutral-600 text-sm leading-relaxed">
-                  Atua como órgão de fiscalização e controle interno, examinando
-                  livros contábeis e emitindo parecer sobre demonstrações
-                  financeiras.
-                </p>
-              </Card>
-            </motion.div>
-          </StaggerContainer>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Documentos Institucionais */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Documentos Institucionais"
             subtitle="Acesse os documentos oficiais do Instituto Rede de Apoio."
           />
 
-          <StaggerContainer className="grid sm:grid-cols-3 gap-6 mt-12 max-w-3xl mx-auto">
+          <motion.div
+            className="grid sm:grid-cols-3 gap-6 mt-16 max-w-3xl"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {documentosInstitucionais.map((doc) => (
               <motion.div key={doc.title} variants={fadeInUp}>
                 <a
                   href={doc.href}
                   target={doc.href !== "#" ? "_blank" : undefined}
                   rel={doc.href !== "#" ? "noopener noreferrer" : undefined}
-                  className={`flex flex-col items-center gap-3 p-6 rounded-2xl bg-white border border-neutral-100 shadow-sm hover:shadow-md hover:border-accent/30 transition-all group ${
+                  className={`flex items-center gap-4 p-5 rounded-xl bg-white border border-neutral-200 hover:border-accent transition-colors group ${
                     doc.href === "#" ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
                   {doc.href !== "#" ? (
-                    <Download className="w-8 h-8 text-accent group-hover:scale-110 transition-transform" />
+                    <Download className="w-5 h-5 text-accent flex-shrink-0" />
                   ) : (
-                    <FileText className="w-8 h-8 text-neutral-400" />
+                    <FileText className="w-5 h-5 text-neutral-400 flex-shrink-0" />
                   )}
-                  <span className="text-sm font-medium text-primary text-center">
+                  <span className="text-sm font-medium text-primary">
                     {doc.title}
                   </span>
                 </a>
               </motion.div>
             ))}
-          </StaggerContainer>
+          </motion.div>
 
-          <p className="text-center text-neutral-500 text-sm mt-6">
+          <p className="text-neutral-600 text-sm mt-6">
             Demais documentos serão disponibilizados em breve.
           </p>
         </div>
       </section>
 
       {/* Princípios de Atuação */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <section className="py-28 bg-primary text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-5">
             Princípios de Atuação
           </h2>
-          <p className="text-white/70 mb-12 max-w-2xl mx-auto">
+          <p className="text-white/50 mb-14 max-w-2xl mx-auto">
             Valores que norteiam todas as ações do Instituto.
           </p>
 
-          <StaggerContainer className="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto">
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-4 max-w-3xl mx-auto"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {principios.map((principio) => (
               <motion.div
                 key={principio}
                 variants={fadeInUp}
-                className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-6 py-3 text-sm font-medium text-white"
+                className="border border-white/20 rounded-full px-6 py-3 text-sm text-white/80"
               >
                 {principio}
               </motion.div>
             ))}
-          </StaggerContainer>
+          </motion.div>
         </div>
       </section>
     </>

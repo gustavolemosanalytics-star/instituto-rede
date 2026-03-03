@@ -63,15 +63,15 @@ export default function TransparenciaContent() {
             height={56}
             className="w-14 h-14"
           />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h1 className="font-heading text-4xl md:text-5xl lg:text-7xl leading-tight">
             Portal da Transparência
           </h1>
         </div>
       </PageHero>
 
       {/* Introduction */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeInUp>
             <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed">
               <p>
@@ -93,8 +93,8 @@ export default function TransparenciaContent() {
       </section>
 
       {/* Documentação Institucional */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Documentação Institucional"
             subtitle="Documentos oficiais do Instituto Rede de Apoio."
@@ -127,8 +127,8 @@ export default function TransparenciaContent() {
       </section>
 
       {/* Parcerias e Instrumentos Firmados */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Parcerias e Instrumentos Firmados"
             subtitle="Informações sobre termos, contratos e prestações de contas."
@@ -138,7 +138,7 @@ export default function TransparenciaContent() {
             {/* Termos de Colaboração */}
             <FadeInUp>
               <Card>
-                <h3 className="text-xl font-bold text-primary mb-4">
+                <h3 className="font-heading text-xl text-primary mb-4">
                   Termos de Colaboração
                 </h3>
 
@@ -169,7 +169,7 @@ export default function TransparenciaContent() {
             {/* Termos de Fomento */}
             <FadeInUp>
               <Card>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Termos de Fomento
                 </h3>
                 <p className="text-neutral-500 text-sm">
@@ -182,7 +182,7 @@ export default function TransparenciaContent() {
             {/* Contratos de Gestão */}
             <FadeInUp>
               <Card>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Contratos de Gestão
                 </h3>
                 <p className="text-neutral-500 text-sm">

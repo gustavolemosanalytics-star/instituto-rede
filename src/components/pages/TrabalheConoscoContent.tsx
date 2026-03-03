@@ -44,8 +44,8 @@ export default function TrabalheConoscoContent() {
       <PageHero title="Trabalhe Conosco" breadcrumb="Trabalhe Conosco" />
 
       {/* Introduction */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeInUp>
             <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed">
               <p>
@@ -66,8 +66,8 @@ export default function TrabalheConoscoContent() {
       </section>
 
       {/* Política de Recrutamento */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Política de Recrutamento e Seleção"
             subtitle="Critérios técnicos e transparência em todos os processos."
@@ -95,8 +95,8 @@ export default function TrabalheConoscoContent() {
       </section>
 
       {/* Editais */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Lista de Editais"
             subtitle="Confira os editais de processos seletivos vigentes."
@@ -105,7 +105,7 @@ export default function TrabalheConoscoContent() {
           <StaggerContainer className="max-w-3xl mx-auto mt-12">
             <motion.div variants={fadeInUp}>
               <Card className="mb-6">
-                <h3 className="text-lg font-bold text-primary mb-4">
+                <h3 className="font-heading text-lg text-primary mb-4">
                   Santo Antônio de Jesus, Bahia
                 </h3>
                 <div className="space-y-3">
@@ -148,19 +148,19 @@ export default function TrabalheConoscoContent() {
       </section>
 
       {/* Banco de Talentos */}
-      <section id="banco-de-talentos" className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section id="banco-de-talentos" className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Banco de Talentos"
             subtitle="Interessados poderão cadastrar currículo para eventual participação em futuros processos seletivos, observadas as necessidades institucionais."
           />
 
           <FadeInUp>
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 mt-8">
+            <div className="max-w-2xl mx-auto bg-white rounded-xl p-8 border border-neutral-200 mt-8">
               {submitted ? (
                 <div className="text-center py-12">
                   <CheckCircle className="w-16 h-16 text-accent mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-primary mb-2">
+                  <h3 className="font-heading text-2xl text-primary mb-2">
                     Cadastro realizado com sucesso!
                   </h3>
                   <p className="text-neutral-600">

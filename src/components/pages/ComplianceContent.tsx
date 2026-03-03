@@ -46,8 +46,8 @@ export default function ComplianceContent() {
       <PageHero title="Governança e Integridade" breadcrumb="Governança e Integridade" />
 
       {/* Introduction */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeInUp>
             <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed">
               <p>
@@ -70,8 +70,8 @@ export default function ComplianceContent() {
       </section>
 
       {/* Estrutura de Governança */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Estrutura de Governança"
             subtitle="Órgãos estatutários com competências definidas e segregadas."
@@ -146,9 +146,9 @@ export default function ComplianceContent() {
       </section>
 
       {/* Princípios Institucionais */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <section className="py-28 bg-primary text-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mb-5">
             Princípios Institucionais
           </h2>
           <p className="text-white/70 mb-12 max-w-2xl mx-auto">
@@ -160,7 +160,7 @@ export default function ComplianceContent() {
               <motion.div
                 key={principio}
                 variants={fadeInUp}
-                className="bg-white/10 backdrop-blur border border-white/20 rounded-full px-6 py-3 text-sm font-medium text-white"
+                className="border border-white/20 rounded-full px-6 py-3 text-sm text-white/80"
               >
                 {principio}
               </motion.div>
@@ -170,8 +170,8 @@ export default function ComplianceContent() {
       </section>
 
       {/* Políticas Institucionais */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Políticas Institucionais"
             subtitle="Documentos que regem a atuação institucional."
@@ -200,8 +200,8 @@ export default function ComplianceContent() {
       </section>
 
       {/* Sistema de Controle Interno */}
-      <section className="py-20 bg-neutral-50">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             title="Sistema de Controle Interno"
             subtitle="Regularidade administrativa e conformidade jurídica."
@@ -241,15 +241,15 @@ export default function ComplianceContent() {
       </section>
 
       {/* Gestão de Riscos */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <FadeInUp>
               <Card className="h-full">
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <AlertTriangle className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Gestão de Riscos e Integridade
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -268,7 +268,7 @@ export default function ComplianceContent() {
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
                   <Lock className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-3">
                   Compromisso com a Transparência
                 </h3>
                 <p className="text-neutral-600 text-sm leading-relaxed">
@@ -285,12 +285,12 @@ export default function ComplianceContent() {
       </section>
 
       {/* CTA to Ouvidoria */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4">
+      <section className="py-28 bg-primary">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <FadeInUp>
             <div className="max-w-2xl mx-auto text-center text-white">
               <ShieldCheck className="w-12 h-12 text-accent mx-auto mb-4" />
-              <h3 className="text-2xl md:text-3xl font-bold mb-3">
+              <h3 className="font-heading text-2xl md:text-3xl mb-3">
                 Canal de Integridade
               </h3>
               <p className="text-white/80 mb-6 leading-relaxed">
