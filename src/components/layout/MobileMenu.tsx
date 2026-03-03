@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
-import { navLinks, contactLinks } from "@/lib/constants";
+import { navLinks } from "@/lib/constants";
 import {
   mobileMenuVariants,
   menuStaggerContainer,
@@ -67,39 +67,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </motion.div>
               ))}
 
-              {/* Divider */}
-              <motion.div variants={menuItemVariants}>
-                <div className="h-px bg-neutral-200 my-3" />
-              </motion.div>
-
-              {/* Contact links */}
-              <motion.div variants={menuItemVariants}>
-                <p className="px-4 py-2 text-sm font-semibold text-neutral-600 uppercase tracking-wider">
-                  Contato
-                </p>
-              </motion.div>
-              {contactLinks.map((link) => (
-                <motion.div key={link.href} variants={menuItemVariants}>
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
-                    className="block py-3 px-4 text-lg font-medium text-neutral-900 hover:text-accent hover:bg-neutral-50 rounded-lg transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              {/* CTA Button */}
-              <motion.div variants={menuItemVariants} className="mt-4">
-                <Link
-                  href="/contato"
-                  onClick={onClose}
-                  className="block text-center py-3 px-6 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors"
-                >
-                  Fale Conosco
-                </Link>
-              </motion.div>
             </motion.nav>
           </motion.aside>
         </>

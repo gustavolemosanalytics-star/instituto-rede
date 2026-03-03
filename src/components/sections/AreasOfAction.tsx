@@ -16,6 +16,7 @@ export default function AreasOfAction() {
         <SectionHeading
           title="Áreas de Atuação"
           subtitle="Atuamos em setores estratégicos para o desenvolvimento do país"
+          animated
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -61,7 +62,7 @@ export default function AreasOfAction() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          <Button variant="secondary" href="/atuacao">
+          <Button variant="secondary" href="/areas-de-atuacao">
             Veja Todas as Áreas
           </Button>
         </motion.div>

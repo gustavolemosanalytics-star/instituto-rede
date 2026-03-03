@@ -1,56 +1,113 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ChevronRight, ArrowRight } from "lucide-react";
-import { areasOfAction } from "@/lib/constants";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import {
+  GraduationCap,
+  HeartPulse,
+  Trophy,
+  HandHeart,
+  Palette,
+  Users,
+  BookOpen,
+  Building2,
+  ClipboardList,
+} from "lucide-react";
+import { fadeInUp } from "@/lib/animations";
 import FadeInUp from "@/components/animations/FadeInUp";
 import StaggerContainer from "@/components/animations/StaggerContainer";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
-import WaveDivider from "@/components/shared/WaveDivider";
+import PageHero from "@/components/shared/PageHero";
+
+const areas = [
+  {
+    icon: GraduationCap,
+    title: "Educação",
+    description:
+      "Promoção e desenvolvimento de ações educacionais formais e não formais, incluindo apoio à gestão educacional, formação e capacitação profissional, implementação de projetos pedagógicos, promoção da inclusão educacional e atendimento especializado, bem como iniciativas voltadas à ampliação do acesso e permanência escolar.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Saúde",
+    description:
+      "Promoção, prevenção e atenção à saúde, por meio da execução de programas assistenciais, apoio à gestão de unidades e políticas públicas de saúde, desenvolvimento de ações educativas e preventivas, promoção do bem-estar físico, mental e social, bem como implementação de projetos voltados à atenção integral à saúde da população.",
+  },
+  {
+    icon: Trophy,
+    title: "Esporte",
+    description:
+      "Promoção da prática esportiva como instrumento de inclusão social, formação cidadã e desenvolvimento humano, incluindo o desenvolvimento de projetos esportivos educacionais e comunitários, realização de eventos e atividades de incentivo ao esporte, formação esportiva e apoio a políticas públicas de incentivo e fomento à prática esportiva.",
+  },
+  {
+    icon: HandHeart,
+    title: "Assistência Social",
+    description:
+      "Desenvolvimento de ações voltadas à proteção social básica e especial, fortalecimento de vínculos familiares e comunitários, promoção da cidadania, garantia de direitos e atendimento a pessoas, famílias e grupos em situação de vulnerabilidade social.",
+  },
+  {
+    icon: Palette,
+    title: "Cultura",
+    description:
+      "Promoção de atividades culturais, artísticas e educativas, valorização da diversidade cultural, desenvolvimento de ações voltadas à formação cultural e incentivo à produção e difusão cultural como instrumento de transformação social.",
+  },
+  {
+    icon: Users,
+    title: "Inclusão Social e Direitos Humanos",
+    description:
+      "Promoção de ações voltadas à defesa e efetivação de direitos fundamentais, inclusão social, fortalecimento da cidadania, enfrentamento de desigualdades sociais e promoção da dignidade humana.",
+  },
+  {
+    icon: BookOpen,
+    title: "Capacitação e Qualificação Profissional",
+    description:
+      "Realização de cursos, treinamentos, oficinas, seminários e programas de formação voltados ao desenvolvimento de competências técnicas e profissionais, contribuindo para a inclusão produtiva e o fortalecimento da autonomia individual e coletiva.",
+  },
+  {
+    icon: Building2,
+    title: "Desenvolvimento Social e Comunitário",
+    description:
+      "Planejamento, execução e monitoramento de projetos sociais voltados ao desenvolvimento sustentável, fortalecimento comunitário, geração de oportunidades e melhoria da qualidade de vida da população.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Apoio Técnico e Gestão de Projetos",
+    description:
+      "Elaboração, execução, acompanhamento e avaliação de programas e projetos sociais, bem como apoio técnico e administrativo à implementação e gestão de políticas públicas e iniciativas de interesse social.",
+  },
+];
 
 export default function AtuacaoContent() {
   return (
     <>
-      {/* Hero Banner */}
-      <section className="bg-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary opacity-90" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Áreas de Atuação
-            </h1>
-            <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
-              <Link href="/" className="hover:text-accent transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Áreas de Atuação</span>
-            </nav>
-          </motion.div>
+      <PageHero title="Áreas de Atuação" breadcrumb="Áreas de Atuação" />
+
+      {/* Introduction */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <FadeInUp>
+            <div className="max-w-4xl mx-auto text-center">
+              <p className="text-neutral-600 leading-relaxed text-lg">
+                O Instituto Rede de Apoio desenvolve ações de interesse público
+                voltadas à promoção do desenvolvimento humano e social, atuando
+                de forma ampla e integrada, nos termos previstos em seu Estatuto
+                Social.
+              </p>
+              <p className="text-neutral-600 leading-relaxed text-lg mt-4">
+                Nossas áreas de atuação abrangem a elaboração, execução, apoio e
+                gestão de programas, projetos e iniciativas próprias ou em
+                parceria com o Poder Público e entidades privadas, contemplando
+                as seguintes frentes:
+              </p>
+            </div>
+          </FadeInUp>
         </div>
       </section>
 
-      <WaveDivider className="text-white -mt-1" />
-
       {/* Areas Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
-          <SectionHeading
-            title="Nossas Áreas de Atuação"
-            subtitle="Atuamos em setores estratégicos para promover o desenvolvimento e a transformação da gestão pública."
-          />
-
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {areasOfAction.map((area) => {
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {areas.map((area) => {
               const Icon = area.icon;
               return (
                 <motion.div key={area.title} variants={fadeInUp}>
@@ -61,20 +118,9 @@ export default function AtuacaoContent() {
                     <h3 className="text-xl font-bold text-primary mb-3">
                       {area.title}
                     </h3>
-                    <p className="text-neutral-600 mb-4 leading-relaxed">
+                    <p className="text-neutral-600 text-sm leading-relaxed">
                       {area.description}
                     </p>
-                    <ul className="space-y-2">
-                      {area.topics.map((topic) => (
-                        <li
-                          key={topic}
-                          className="flex items-start gap-2 text-sm text-neutral-600"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
-                          {topic}
-                        </li>
-                      ))}
-                    </ul>
                   </Card>
                 </motion.div>
               );
@@ -83,23 +129,17 @@ export default function AtuacaoContent() {
         </div>
       </section>
 
-      <WaveDivider className="text-primary -mt-1" />
-
-      {/* CTA Section */}
+      {/* Closing statement */}
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4">
-          <FadeInUp className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Quer saber como podemos ajudar?
-            </h2>
-            <p className="text-white/70 mb-8 text-lg leading-relaxed">
-              Entre em contato com nossa equipe e descubra como o Instituto Rede
-              pode apoiar a gestão pública na sua região.
+          <FadeInUp className="text-center max-w-3xl mx-auto">
+            <p className="text-white/80 text-lg leading-relaxed">
+              As áreas de atuação do Instituto Rede de Apoio refletem seu
+              compromisso institucional com a promoção de direitos, o
+              fortalecimento das políticas públicas e o desenvolvimento social
+              sustentável, atuando com responsabilidade, transparência e
+              observância à legislação aplicável.
             </p>
-            <Button href="/contato" variant="primary" className="group">
-              Fale Conosco
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
           </FadeInUp>
         </div>
       </section>

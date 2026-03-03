@@ -1,113 +1,197 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ChevronRight, FileText, Download } from "lucide-react";
-import { transparencyDocuments } from "@/lib/constants";
+import Image from "next/image";
+import { FileText, Download } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
+import FadeInUp from "@/components/animations/FadeInUp";
 import StaggerContainer from "@/components/animations/StaggerContainer";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-import Button from "@/components/ui/Button";
+import PageHero from "@/components/shared/PageHero";
 
-const categories = ["Todos", "Relatório", "Financeiro", "Institucional", "Compliance"];
+const documentacaoInstitucional = [
+  {
+    title: "Estatuto Social",
+    href: "/arquivos/Estatuto Social - Instituto Rede de Apoi.pdf",
+  },
+  {
+    title: "Cartão CNPJ",
+    href: "/arquivos/CARTÃO CNPJ - INSTITUTO REDE.pdf",
+  },
+  { title: "Ata de eleição da diretoria vigente", href: "#" },
+  { title: "Certidões", href: "#" },
+  { title: "Qualificações", href: "#" },
+];
+
+const termosColaboracaoLinks = [
+  {
+    title: "Edital Chamamento Público",
+    href: "/arquivos/REDE SAJ.pdf",
+  },
+  {
+    title: "Ata de Julgamento",
+    href: "/arquivos/ATA_DE_JULGAMENTO.pdf",
+  },
+  {
+    title: "Parecer Jurídico",
+    href: "/arquivos/PARECER_JURIDICO.pdf",
+  },
+  {
+    title: "Resultado Definitivo",
+    href: "/arquivos/DOM_Resultado_Definitivo.pdf",
+  },
+  {
+    title: "Ato de Homologação",
+    href: "/arquivos/Publicacao_Ato_de_Homologacao.pdf",
+  },
+  {
+    title: "Portaria SME Nº 15/2026",
+    href: "/arquivos/PORTARIA_SME_N_15_2026_GESTORA_AVALIACAO_E_MONITORAMENTO.pdf",
+  },
+];
 
 export default function TransparenciaContent() {
-  const [activeCategory, setActiveCategory] = useState("Todos");
-
-  const filteredDocuments =
-    activeCategory === "Todos"
-      ? transparencyDocuments
-      : transparencyDocuments.filter((doc) => doc.category === activeCategory);
-
   return (
     <>
-      {/* Hero Banner */}
-      <section className="bg-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary opacity-90" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Transparência
-            </h1>
-            <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
-              <Link href="/" className="hover:text-accent transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Transparência</span>
-            </nav>
-          </motion.div>
+      <PageHero title="Portal da Transparência" breadcrumb="Portal da Transparência">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <Image
+            src="/images/simbolo_transparencia.png"
+            alt="Símbolo de Transparência"
+            width={56}
+            height={56}
+            className="w-14 h-14"
+          />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
+            Portal da Transparência
+          </h1>
+        </div>
+      </PageHero>
+
+      {/* Introduction */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <FadeInUp>
+            <div className="max-w-4xl mx-auto space-y-4 text-neutral-600 leading-relaxed">
+              <p>
+                O Instituto Rede de Apoio disponibiliza neste espaço informações
+                atualizadas sobre suas parcerias, execução financeira e prestação
+                de contas, em observância aos princípios da publicidade e da
+                transparência, especialmente no âmbito da Lei nº 13.019/2014 e,
+                quando aplicável, da Lei nº 9.637/1998, bem como demais normas
+                pertinentes.
+              </p>
+              <p>
+                As informações disponibilizadas neste Portal são atualizadas
+                periodicamente, conforme a execução dos instrumentos firmados e
+                os prazos legais aplicáveis.
+              </p>
+            </div>
+          </FadeInUp>
         </div>
       </section>
 
-      {/* Documents Section */}
-      <section className="py-20 bg-white">
+      {/* Documentação Institucional */}
+      <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
           <SectionHeading
-            title="Documentos e Relatórios"
-            subtitle="Compromisso com a transparência e prestação de contas à sociedade."
+            title="Documentação Institucional"
+            subtitle="Documentos oficiais do Instituto Rede de Apoio."
           />
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-accent text-white shadow-md"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Documents Grid */}
-          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredDocuments.map((doc) => (
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 max-w-3xl mx-auto">
+            {documentacaoInstitucional.map((doc) => (
               <motion.div key={doc.title} variants={fadeInUp}>
-                <Card className="h-full flex flex-col">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                      <FileText className="w-6 h-6 text-accent" />
-                    </div>
-                    <div>
-                      <Badge className="mb-2">{doc.category}</Badge>
-                      <h3 className="text-lg font-bold text-primary">
-                        {doc.title}
-                      </h3>
-                    </div>
-                  </div>
-                  <p className="text-sm text-neutral-500 mb-1">Ano: {doc.year}</p>
-                  <p className="text-neutral-600 text-sm leading-relaxed mb-5 flex-1">
-                    {doc.description}
-                  </p>
-                  <Button variant="secondary" href={doc.fileUrl} className="w-full">
-                    <Download className="w-4 h-4" />
-                    Baixar
-                  </Button>
-                </Card>
+                <a
+                  href={doc.href}
+                  target={doc.href !== "#" ? "_blank" : undefined}
+                  rel={doc.href !== "#" ? "noopener noreferrer" : undefined}
+                  className={`flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-white hover:border-accent/30 hover:bg-accent/5 transition-all group ${
+                    doc.href === "#" ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {doc.href !== "#" ? (
+                    <Download className="w-5 h-5 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                  ) : (
+                    <FileText className="w-5 h-5 text-neutral-400 shrink-0" />
+                  )}
+                  <span className="text-sm font-medium text-neutral-700">
+                    {doc.title}
+                  </span>
+                </a>
               </motion.div>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
 
-          {filteredDocuments.length === 0 && (
-            <p className="text-center text-neutral-500 mt-8">
-              Nenhum documento encontrado para esta categoria.
-            </p>
-          )}
+      {/* Parcerias e Instrumentos Firmados */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            title="Parcerias e Instrumentos Firmados"
+            subtitle="Informações sobre termos, contratos e prestações de contas."
+          />
+
+          <div className="max-w-4xl mx-auto mt-12 space-y-8">
+            {/* Termos de Colaboração */}
+            <FadeInUp>
+              <Card>
+                <h3 className="text-xl font-bold text-primary mb-4">
+                  Termos de Colaboração
+                </h3>
+
+                <div className="mb-4">
+                  <h4 className="text-base font-semibold text-neutral-700 mb-3">
+                    Santo Antônio de Jesus, Bahia
+                  </h4>
+                  <div className="space-y-2">
+                    {termosColaboracaoLinks.map((item) => (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-lg border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
+                      >
+                        <Download className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm text-neutral-700">
+                          {item.title}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </FadeInUp>
+
+            {/* Termos de Fomento */}
+            <FadeInUp>
+              <Card>
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  Termos de Fomento
+                </h3>
+                <p className="text-neutral-500 text-sm">
+                  Informações serão disponibilizadas conforme a formalização de
+                  novos instrumentos.
+                </p>
+              </Card>
+            </FadeInUp>
+
+            {/* Contratos de Gestão */}
+            <FadeInUp>
+              <Card>
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  Contratos de Gestão
+                </h3>
+                <p className="text-neutral-500 text-sm">
+                  Informações serão disponibilizadas conforme a formalização de
+                  novos instrumentos.
+                </p>
+              </Card>
+            </FadeInUp>
+          </div>
         </div>
       </section>
     </>

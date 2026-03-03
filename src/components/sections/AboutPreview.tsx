@@ -35,7 +35,7 @@ export default function AboutPreview() {
               inovação e compromisso com resultados para transformar a realidade
               da administração pública brasileira.
             </p>
-            <Button variant="primary" href="/sobre-nos">
+            <Button variant="primary" href="/institucional">
               Saiba Mais
             </Button>
           </motion.div>

@@ -2,8 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ChevronRight, MessageSquare, Shield, CheckCircle } from "lucide-react";
+import {
+  ShieldCheck,
+  Lock,
+  Clock,
+  CheckCircle,
+  Upload,
+} from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,61 +20,61 @@ import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Input";
+import PageHero from "@/components/shared/PageHero";
 
 const ouvidoriaSchema = z.object({
-  tipo: z.string().min(1, "Selecione o tipo de manifestação"),
-  mensagem: z.string().min(1, "Mensagem é obrigatória"),
+  tipoManifestacao: z.string().min(1, "Selecione o tipo de manifestação"),
+  identificar: z.string().min(1, "Selecione uma opção"),
   nome: z.string().optional(),
   email: z.string().email("Email inválido").optional().or(z.literal("")),
   telefone: z.string().optional(),
-  sigilo: z.boolean().optional(),
+  relacao: z.string().optional(),
+  descricao: z.string().min(1, "Descrição é obrigatória"),
+  declaracao: z.literal(true, { message: "Você deve aceitar a declaração" }),
 });
 
 type OuvidoriaFormData = z.infer<typeof ouvidoriaSchema>;
 
 const tiposManifestacao = [
+  { value: "informacao", label: "Solicitação de informação" },
   { value: "sugestao", label: "Sugestão" },
   { value: "reclamacao", label: "Reclamação" },
   { value: "elogio", label: "Elogio" },
   { value: "denuncia", label: "Denúncia" },
+  { value: "outros", label: "Outros" },
 ];
 
-const manifestationInfo = [
-  {
-    icon: MessageSquare,
-    title: "Sugestão",
-    description: "Proponha melhorias para nossos processos e serviços.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Reclamação",
-    description: "Relate problemas ou insatisfações com nossos serviços.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Elogio",
-    description: "Reconheça o bom trabalho de nossas equipes e parceiros.",
-  },
-  {
-    icon: Shield,
-    title: "Denúncia",
-    description: "Reporte condutas inadequadas ou irregularidades com total sigilo.",
-  },
+const relacoesInstituto = [
+  { value: "colaborador", label: "Colaborador" },
+  { value: "fornecedor", label: "Fornecedor" },
+  { value: "beneficiario", label: "Beneficiário" },
+  { value: "parceiro", label: "Parceiro" },
+  { value: "cidadao", label: "Cidadão" },
+  { value: "outro", label: "Outro" },
+];
+
+const garantias = [
+  "Possibilidade de manifestação identificada ou anônima",
+  "Tratamento confidencial das informações recebidas",
+  "Proibição de retaliação",
+  "Análise técnica e imparcial das comunicações",
+  "Encaminhamento aos órgãos internos competentes",
 ];
 
 export default function OuvidoriaContent() {
   const [submitted, setSubmitted] = useState(false);
+  const [showIdentityFields, setShowIdentityFields] = useState(false);
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<OuvidoriaFormData>({
     resolver: zodResolver(ouvidoriaSchema),
-    defaultValues: {
-      sigilo: false,
-    },
   });
+
+  const identificar = watch("identificar");
 
   const onSubmit = (_data: OuvidoriaFormData) => {
     setSubmitted(true);
@@ -77,130 +82,237 @@ export default function OuvidoriaContent() {
 
   return (
     <>
-      {/* Hero Banner */}
-      <section className="bg-primary text-white py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary opacity-90" />
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Ouvidoria
-            </h1>
-            <nav className="flex items-center justify-center gap-2 text-sm text-white/70">
-              <Link href="/" className="hover:text-accent transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Ouvidoria</span>
-            </nav>
-          </motion.div>
+      <PageHero title="Ouvidoria e Canal de Integridade" breadcrumb="Ouvidoria e Canal de Integridade" />
+
+      {/* Introduction */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <FadeInUp>
+            <div className="max-w-4xl mx-auto text-neutral-600 leading-relaxed">
+              <p>
+                O Instituto Rede de Apoio mantém canal permanente de Ouvidoria e
+                Integridade destinado ao recebimento de manifestações, sugestões,
+                reclamações, denúncias e solicitações de informação, assegurando
+                tratamento adequado, confidencialidade e observância aos
+                princípios da ética e da transparência institucional.
+              </p>
+            </div>
+          </FadeInUp>
         </div>
       </section>
 
-      {/* Explanatory Section */}
+      {/* Finalidade e Canal */}
+      <section className="py-20 bg-neutral-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <FadeInUp>
+              <Card className="h-full">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                  <ShieldCheck className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  Finalidade da Ouvidoria
+                </h3>
+                <p className="text-neutral-600 text-sm leading-relaxed">
+                  A Ouvidoria tem como objetivo promover o diálogo institucional
+                  com a sociedade, colaboradores, parceiros e beneficiários,
+                  contribuindo para o aprimoramento contínuo das atividades
+                  desenvolvidas pelo Instituto.
+                </p>
+              </Card>
+            </FadeInUp>
+
+            <FadeInUp>
+              <Card className="h-full">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                  <Lock className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  Canal de Integridade
+                </h3>
+                <p className="text-neutral-600 text-sm leading-relaxed">
+                  O Canal de Integridade destina-se ao recebimento de
+                  comunicações relacionadas a eventuais irregularidades,
+                  descumprimento de normas internas, conflitos de interesse,
+                  práticas incompatíveis com o Código de Ética ou quaisquer
+                  condutas que possam comprometer a integridade institucional.
+                </p>
+              </Card>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Garantias ao Manifestante */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <SectionHeading
-            title="Canal de Ouvidoria"
-            subtitle="A ouvidoria é um canal de comunicação direta entre você e o Instituto Rede. Por meio dela, você pode enviar sugestões, reclamações, elogios ou denúncias, contribuindo para a melhoria contínua de nossos serviços e processos."
+            title="Garantias ao Manifestante"
+            subtitle="Asseguramos tratamento ético e confidencial a todas as manifestações."
           />
 
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            {manifestationInfo.map((item) => (
-              <motion.div key={item.title} variants={fadeInUp}>
-                <Card className="h-full text-center">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-bold text-primary mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
+          <StaggerContainer className="max-w-3xl mx-auto mt-12 space-y-3">
+            {garantias.map((garantia) => (
+              <motion.div
+                key={garantia}
+                variants={fadeInUp}
+                className="flex items-start gap-3 p-4 rounded-xl bg-neutral-50 border border-neutral-100"
+              >
+                <CheckCircle className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                <span className="text-neutral-700 text-sm">{garantia}</span>
               </motion.div>
             ))}
           </StaggerContainer>
         </div>
       </section>
 
-      {/* Form Section */}
+      {/* Fluxo e Prazo */}
       <section className="py-20 bg-neutral-50">
         <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <FadeInUp>
+              <Card className="h-full">
+                <h3 className="text-xl font-bold text-primary mb-3">
+                  Fluxo de Tratamento
+                </h3>
+                <p className="text-neutral-600 text-sm leading-relaxed">
+                  As manifestações recebidas são registradas, analisadas e
+                  encaminhadas aos responsáveis institucionais competentes,
+                  observando-se critérios de imparcialidade, legalidade e
+                  razoabilidade. Quando necessário, poderão ser adotadas medidas
+                  internas de apuração, correção ou encaminhamento às autoridades
+                  competentes.
+                </p>
+              </Card>
+            </FadeInUp>
+
+            <FadeInUp>
+              <Card className="h-full">
+                <div className="flex items-center gap-3 mb-3">
+                  <Clock className="w-6 h-6 text-accent" />
+                  <h3 className="text-xl font-bold text-primary">
+                    Prazo de Resposta
+                  </h3>
+                </div>
+                <p className="text-neutral-600 text-sm leading-relaxed">
+                  O Instituto compromete-se a analisar e responder às
+                  manifestações no prazo de até 20 (vinte) dias corridos,
+                  contados do registro da demanda, podendo esse prazo ser
+                  prorrogado mediante justificativa, nos casos que demandem
+                  apuração mais complexa.
+                </p>
+              </Card>
+            </FadeInUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulário */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <SectionHeading
-            title="Envie sua manifestação"
-            subtitle="Preencha o formulário abaixo. Sua manifestação será tratada com seriedade e confidencialidade."
+            title="Registrar Manifestação"
+            subtitle="Preencha o formulário abaixo para registrar sua manifestação."
           />
 
           <FadeInUp>
-            <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-neutral-100">
+            <div className="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 mt-8">
               {submitted ? (
                 <div className="text-center py-12">
                   <CheckCircle className="w-16 h-16 text-accent mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-primary mb-2">
-                    Manifestação enviada com sucesso!
+                    Sua manifestação foi registrada com sucesso.
                   </h3>
-                  <p className="text-neutral-600">
-                    Agradecemos sua contribuição. Sua manifestação será analisada por nossa equipe.
+                  <p className="text-neutral-600 mb-2">
+                    O prazo estimado para resposta é de até 20 (vinte) dias
+                    corridos.
+                  </p>
+                  <p className="text-neutral-500 text-sm">
+                    Caso tenha se identificado, você receberá retorno pelo e-mail
+                    informado.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  {/* Tipo de manifestação */}
+                  {/* Tipo de Manifestação */}
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-neutral-700">
-                      Tipo de manifestação
+                      Tipo de Manifestação *
                     </label>
-                    <div className="grid grid-cols-2 gap-3">
+                    <select
+                      {...register("tipoManifestacao")}
+                      className="w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    >
+                      <option value="">Selecione...</option>
                       {tiposManifestacao.map((tipo) => (
-                        <label
-                          key={tipo.value}
-                          className="flex items-center gap-3 rounded-lg border border-neutral-200 p-3 cursor-pointer transition-all hover:border-accent hover:bg-accent/5 has-[:checked]:border-accent has-[:checked]:bg-accent/5"
-                        >
-                          <input
-                            type="radio"
-                            value={tipo.value}
-                            {...register("tipo")}
-                            className="w-4 h-4 text-accent accent-accent"
-                          />
-                          <span className="text-sm font-medium text-neutral-700">
-                            {tipo.label}
-                          </span>
-                        </label>
+                        <option key={tipo.value} value={tipo.value}>
+                          {tipo.label}
+                        </option>
                       ))}
-                    </div>
-                    {errors.tipo && (
-                      <p className="text-xs text-red-500">{errors.tipo.message}</p>
+                    </select>
+                    {errors.tipoManifestacao && (
+                      <p className="text-xs text-red-500">
+                        {errors.tipoManifestacao.message}
+                      </p>
                     )}
                   </div>
 
-                  <Textarea
-                    label="Mensagem"
-                    placeholder="Descreva sua manifestação em detalhes..."
-                    rows={5}
-                    {...register("mensagem")}
-                    error={errors.mensagem?.message}
-                  />
+                  {/* Deseja se identificar? */}
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-neutral-700">
+                      Deseja se identificar? *
+                    </label>
+                    <div className="grid grid-cols-2 gap-3">
+                      <label className="flex items-center gap-3 rounded-lg border border-neutral-200 p-3 cursor-pointer transition-all hover:border-accent hover:bg-accent/5 has-[:checked]:border-accent has-[:checked]:bg-accent/5">
+                        <input
+                          type="radio"
+                          value="sim"
+                          {...register("identificar")}
+                          onChange={(e) => {
+                            register("identificar").onChange(e);
+                            setShowIdentityFields(true);
+                          }}
+                          className="w-4 h-4 accent-accent"
+                        />
+                        <span className="text-sm font-medium text-neutral-700">
+                          Sim
+                        </span>
+                      </label>
+                      <label className="flex items-center gap-3 rounded-lg border border-neutral-200 p-3 cursor-pointer transition-all hover:border-accent hover:bg-accent/5 has-[:checked]:border-accent has-[:checked]:bg-accent/5">
+                        <input
+                          type="radio"
+                          value="nao"
+                          {...register("identificar")}
+                          onChange={(e) => {
+                            register("identificar").onChange(e);
+                            setShowIdentityFields(false);
+                          }}
+                          className="w-4 h-4 accent-accent"
+                        />
+                        <span className="text-sm font-medium text-neutral-700">
+                          Não (manifestação anônima)
+                        </span>
+                      </label>
+                    </div>
+                    {errors.identificar && (
+                      <p className="text-xs text-red-500">
+                        {errors.identificar.message}
+                      </p>
+                    )}
+                  </div>
 
-                  <div className="border-t border-neutral-100 pt-6">
-                    <p className="text-sm text-neutral-500 mb-4">
-                      Os campos abaixo são opcionais. Preencha caso deseje receber um retorno sobre sua manifestação.
-                    </p>
-                    <div className="space-y-4">
+                  {/* Identity Fields (conditional) */}
+                  {(identificar === "sim" || showIdentityFields) && (
+                    <div className="space-y-4 p-4 rounded-xl bg-neutral-50 border border-neutral-100">
                       <Input
-                        label="Nome (opcional)"
+                        label="Nome completo"
                         placeholder="Seu nome"
                         {...register("nome")}
                         error={errors.nome?.message}
                       />
                       <div className="grid sm:grid-cols-2 gap-4">
                         <Input
-                          label="Email (opcional)"
+                          label="E-mail"
                           type="email"
                           placeholder="seu@email.com"
                           {...register("email")}
@@ -214,32 +326,91 @@ export default function OuvidoriaContent() {
                         />
                       </div>
                     </div>
+                  )}
+
+                  {/* Relação com o Instituto */}
+                  <div className="flex flex-col gap-2">
+                    <label className="text-sm font-medium text-neutral-700">
+                      Relação com o Instituto (opcional)
+                    </label>
+                    <select
+                      {...register("relacao")}
+                      className="w-full rounded-lg border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    >
+                      <option value="">Selecione...</option>
+                      {relacoesInstituto.map((rel) => (
+                        <option key={rel.value} value={rel.value}>
+                          {rel.label}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
-                  {/* Sigilo Checkbox */}
+                  {/* Descrição */}
+                  <Textarea
+                    label="Descrição da Manifestação *"
+                    placeholder="Descreva sua manifestação em detalhes..."
+                    rows={6}
+                    {...register("descricao")}
+                    error={errors.descricao?.message}
+                  />
+
+                  {/* File Upload */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-sm font-medium text-neutral-700">
+                      Anexar Arquivos (opcional)
+                    </label>
+                    <label className="flex items-center gap-3 w-full rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-4 py-4 text-sm cursor-pointer transition-all hover:border-accent hover:bg-accent/5">
+                      <Upload className="w-5 h-5 text-neutral-400" />
+                      <span className="text-neutral-500">
+                        PDF, JPG ou PNG — Clique para selecionar
+                      </span>
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        multiple
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+
+                  {/* Declaração */}
                   <label className="flex items-start gap-3 cursor-pointer group">
                     <input
                       type="checkbox"
-                      {...register("sigilo")}
-                      className="w-4 h-4 mt-0.5 rounded border-neutral-300 text-accent accent-accent"
+                      {...register("declaracao")}
+                      className="w-4 h-4 mt-0.5 rounded border-neutral-300 accent-accent"
                     />
-                    <div>
-                      <span className="text-sm font-medium text-neutral-700 group-hover:text-primary transition-colors">
-                        Desejo manter minha identidade em sigilo
-                      </span>
-                      <p className="text-xs text-neutral-500 mt-0.5">
-                        Sua identidade será preservada durante todo o processo de apuração.
-                      </p>
-                    </div>
+                    <span className="text-sm text-neutral-600 leading-relaxed">
+                      Declaro que as informações prestadas são verdadeiras,
+                      estando ciente de que comunicações realizadas de má-fé
+                      poderão ser desconsideradas.
+                    </span>
                   </label>
+                  {errors.declaracao && (
+                    <p className="text-xs text-red-500">
+                      {errors.declaracao.message}
+                    </p>
+                  )}
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Enviando..." : "Enviar manifestação"}
                   </Button>
                 </form>
               )}
             </div>
           </FadeInUp>
+
+          <p className="text-center text-neutral-500 text-sm mt-8 max-w-3xl mx-auto">
+            O Instituto Rede de Apoio reafirma seu compromisso com a
+            integridade, a transparência e o controle social, incentivando a
+            participação responsável da sociedade no acompanhamento de suas
+            atividades.
+          </p>
         </div>
       </section>
     </>

@@ -14,6 +14,7 @@ export default function WhatWeDo() {
         <SectionHeading
           title="O Que Fazemos"
           subtitle="Conheça os diferenciais que nos tornam referência em apoio à gestão pública"
+          animated
         />
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
