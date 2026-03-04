@@ -65,7 +65,7 @@ export default function Navbar() {
   return (
     <CardNav
       items={navItems}
-      baseColor="#fff"
+      baseColor="rgba(255, 255, 255, 0.65)"
       menuColor="#0A2540"
       buttonBgColor="#0A2540"
       buttonTextColor="#fff"
