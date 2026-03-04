@@ -6,6 +6,8 @@ import { areasOfAction } from "@/lib/constants";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 
+const areaColors = ["#00AEEF", "#ED1C24", "#00A651", "#00A651", "#FFC220"];
+
 export default function AreasOfAction() {
   return (
     <section className="py-28 md:py-36 px-6 bg-neutral-50">
@@ -24,15 +26,20 @@ export default function AreasOfAction() {
         >
           {areasOfAction.map((area, i) => {
             const Icon = area.icon;
+            const color = areaColors[i % areaColors.length];
             return (
               <motion.div
                 key={area.title}
                 variants={fadeInUp}
-                className="group bg-white rounded-xl border border-neutral-200 p-6 hover:border-accent/40 transition-colors"
+                className="group bg-white rounded-xl border border-neutral-200 p-6 transition-colors"
+                style={{ borderLeftWidth: 3, borderLeftColor: color }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-accent" />
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${color}15` }}
+                  >
+                    <Icon className="w-5 h-5" style={{ color }} />
                   </div>
                   <h3 className="font-heading text-xl text-primary">
                     {area.title}

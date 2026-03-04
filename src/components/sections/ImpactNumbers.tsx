@@ -51,6 +51,8 @@ function AnimeCounter({
   );
 }
 
+const impactColors = ["#00AEEF", "#ED1C24", "#00A651", "#FFC220"];
+
 export default function ImpactNumbers() {
   return (
     <section className="py-28 md:py-36 px-6 border-t border-neutral-200">
@@ -68,7 +70,11 @@ export default function ImpactNumbers() {
                 suffix={item.suffix}
                 className="text-5xl md:text-7xl font-light text-primary tabular-nums"
               />
-              <p className="mt-3 text-neutral-600 text-xs md:text-sm tracking-wide uppercase">
+              <div
+                className="mx-auto mt-4 mb-2 w-8 h-0.5 rounded-full"
+                style={{ backgroundColor: impactColors[i] }}
+              />
+              <p className="text-neutral-600 text-xs md:text-sm tracking-wide uppercase">
                 {item.label}
               </p>
             </div>

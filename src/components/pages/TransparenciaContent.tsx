@@ -10,14 +10,16 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import PageHero from "@/components/shared/PageHero";
 
+const SUPABASE_STORAGE = "https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos";
+
 const documentacaoInstitucional = [
   {
     title: "Estatuto Social",
-    href: "/arquivos/Estatuto Social - Instituto Rede de Apoi.pdf",
+    href: `${SUPABASE_STORAGE}/Estatuto%20Social%20-%20Instituto%20Rede%20de%20Apoi.pdf`,
   },
   {
     title: "Cartão CNPJ",
-    href: "/arquivos/CARTÃO CNPJ - INSTITUTO REDE.pdf",
+    href: `${SUPABASE_STORAGE}/CARTAO%20CNPJ%20-%20INSTITUTO%20REDE.pdf`,
   },
   { title: "Ata de eleição da diretoria vigente", href: "#" },
   { title: "Certidões", href: "#" },
@@ -27,27 +29,27 @@ const documentacaoInstitucional = [
 const termosColaboracaoLinks = [
   {
     title: "Edital Chamamento Público",
-    href: "/arquivos/REDE SAJ.pdf",
+    href: `${SUPABASE_STORAGE}/REDE%20SAJ.pdf`,
   },
   {
     title: "Ata de Julgamento",
-    href: "/arquivos/ATA_DE_JULGAMENTO.pdf",
+    href: `${SUPABASE_STORAGE}/ATA_DE_JULGAMENTO.pdf`,
   },
   {
     title: "Parecer Jurídico",
-    href: "/arquivos/PARECER_JURIDICO.pdf",
+    href: `${SUPABASE_STORAGE}/PARECER_JURIDICO.pdf`,
   },
   {
     title: "Resultado Definitivo",
-    href: "/arquivos/DOM_Resultado_Definitivo.pdf",
+    href: `${SUPABASE_STORAGE}/DOM_Resultado_Definitivo.pdf`,
   },
   {
     title: "Ato de Homologação",
-    href: "/arquivos/Publicacao_Ato_de_Homologacao.pdf",
+    href: `${SUPABASE_STORAGE}/Publicacao_Ato_de_Homologacao.pdf`,
   },
   {
     title: "Portaria SME Nº 15/2026",
-    href: "/arquivos/PORTARIA_SME_N_15_2026_GESTORA_AVALIACAO_E_MONITORAMENTO.pdf",
+    href: `${SUPABASE_STORAGE}/PORTARIA_SME_N_15_2026_GESTORA_AVALIACAO_E_MONITORAMENTO.pdf`,
   },
 ];
 

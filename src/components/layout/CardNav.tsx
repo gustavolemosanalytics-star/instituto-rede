@@ -36,7 +36,7 @@ export default function CardNav({
   items,
   className = "",
   ease = "power3.out",
-  baseColor = "#fff",
+  baseColor = "rgba(255, 255, 255, 0.65)",
   menuColor,
   buttonBgColor,
   buttonTextColor,

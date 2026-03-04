@@ -5,6 +5,8 @@ import { fadeInUp, staggerContainer } from "@/lib/animations";
 import { differentials } from "@/lib/constants";
 import SectionHeading from "@/components/ui/SectionHeading";
 
+const diffColors = ["#00AEEF", "#ED1C24", "#00A651", "#FFC220", "#00AEEF", "#00A651"];
+
 export default function WhatWeDo() {
   return (
     <section className="py-28 md:py-36 px-6">
@@ -28,7 +30,10 @@ export default function WhatWeDo() {
               className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 py-8 border-b border-neutral-200 last:border-b-0"
             >
               <div className="md:col-span-1">
-                <span className="font-heading text-3xl text-accent/60">
+                <span
+                  className="font-heading text-3xl"
+                  style={{ color: diffColors[i % diffColors.length] }}
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>

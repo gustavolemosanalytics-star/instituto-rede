@@ -47,15 +47,17 @@ const estrutura = [
   },
 ];
 
+const SUPABASE_STORAGE = "https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos";
+
 const documentosInstitucionais = [
   {
     title: "Estatuto Social",
-    href: "/arquivos/Estatuto Social - Instituto Rede de Apoi.pdf",
+    href: `${SUPABASE_STORAGE}/Estatuto%20Social%20-%20Instituto%20Rede%20de%20Apoi.pdf`,
   },
   { title: "Ata da Diretoria vigente", href: "#" },
   {
     title: "Cartão CNPJ",
-    href: "/arquivos/CARTÃO CNPJ - INSTITUTO REDE.pdf",
+    href: `${SUPABASE_STORAGE}/CARTAO%20CNPJ%20-%20INSTITUTO%20REDE.pdf`,
   },
 ];
 
