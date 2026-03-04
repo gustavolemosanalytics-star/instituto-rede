@@ -84,6 +84,7 @@ export default function AtuacaoContent() {
       <section className="py-28 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -93,21 +94,17 @@ export default function AtuacaoContent() {
               <motion.div
                 key={area.title}
                 variants={fadeInUp}
-                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 py-10 border-b border-neutral-200 last:border-b-0"
+                className="bg-white rounded-xl border border-neutral-200 p-6 flex flex-col"
               >
-                <div className="md:col-span-1">
-                  <span className="font-heading text-2xl text-accent/50">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <div className="md:col-span-3">
-                  <h3 className="font-heading text-2xl text-primary">{area.title}</h3>
-                </div>
-                <div className="md:col-span-8">
-                  <p className="text-neutral-600 leading-relaxed">
-                    {area.description}
-                  </p>
-                </div>
+                <span className="text-sm font-medium text-accent mb-3">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-heading text-xl text-primary mb-3">
+                  {area.title}
+                </h3>
+                <p className="text-neutral-500 text-sm leading-relaxed">
+                  {area.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
