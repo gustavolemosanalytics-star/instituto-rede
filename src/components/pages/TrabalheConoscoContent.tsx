@@ -110,7 +110,7 @@ export default function TrabalheConoscoContent() {
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href="https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos/REDE%20SAJ.pdf"
+                    href="https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos/Edital_Chamamento_Termo_de_Colaboracao_Completo_errata_08_12_2025_1_.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
