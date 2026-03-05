@@ -1,10 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FileText,
-  Download,
-} from "lucide-react";
+import { FileText } from "lucide-react";
 import { fadeInUp, slideFromLeft, slideFromRight, staggerContainer } from "@/lib/animations";
 import FadeInUp from "@/components/animations/FadeInUp";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -31,34 +28,30 @@ const principios = [
 const estrutura = [
   {
     title: "Assembleia Geral",
-    description: "Órgão máximo de deliberação, responsável por decidir sobre matérias institucionais relevantes e eleger membros dos órgãos de administração e fiscalização.",
+    description:
+      "A Assembleia Geral constitui o órgão máximo de deliberação da entidade, sendo responsável por decidir sobre matérias institucionais relevantes, eleger e destituir membros dos órgãos de administração e fiscalização, aprovar alterações estatutárias e deliberar sobre assuntos estratégicos que envolvam os interesses e finalidades da associação, nos termos previstos no Estatuto.",
   },
   {
     title: "Conselho de Administração",
-    description: "Exerce função estratégica e de supervisão institucional, definindo diretrizes gerais de atuação e fiscalizando a Diretoria Executiva.",
+    description:
+      "O Conselho de Administração exerce função estratégica e de supervisão institucional, competindo-lhe definir diretrizes gerais de atuação, acompanhar o cumprimento das finalidades estatutárias, deliberar sobre matérias de natureza estratégica e fiscalizar a atuação da Diretoria Executiva. Sua atuação assegura alinhamento entre planejamento institucional, execução de projetos e observância das normas aplicáveis.",
   },
   {
     title: "Diretoria Executiva",
-    description: "Responsável pela administração e gestão cotidiana, executando diretrizes, administrando recursos e coordenando programas e projetos.",
+    description:
+      "A Diretoria Executiva é o órgão responsável pela administração e gestão cotidiana do Instituto, cabendo-lhe representar institucional e juridicamente a entidade, executar as diretrizes estabelecidas pelos órgãos superiores, administrar recursos financeiros e patrimoniais, celebrar parcerias e instrumentos jurídicos, bem como coordenar a execução de programas, projetos e demais atividades institucionais.",
   },
   {
     title: "Conselho Fiscal",
-    description: "Atua como órgão de fiscalização e controle interno, examinando livros contábeis e emitindo parecer sobre demonstrações financeiras.",
+    description:
+      "O Conselho Fiscal atua como órgão de fiscalização e controle interno, competindo-lhe examinar livros e documentos contábeis, emitir parecer sobre demonstrações financeiras, acompanhar a gestão administrativa e financeira e zelar pela regularidade, legalidade e transparência da atuação institucional.",
   },
 ];
 
-const SUPABASE_STORAGE = "https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos";
-
 const documentosInstitucionais = [
-  {
-    title: "Estatuto Social",
-    href: `${SUPABASE_STORAGE}/Estatuto%20Social%20-%20Instituto%20Rede%20de%20Apoi.pdf`,
-  },
+  { title: "Estatuto Social", href: "#" },
   { title: "Ata da Diretoria vigente", href: "#" },
-  {
-    title: "Cartão CNPJ",
-    href: `${SUPABASE_STORAGE}/CARTAO%20CNPJ%20-%20INSTITUTO%20REDE.pdf`,
-  },
+  { title: "Cartão CNPJ", href: "#" },
 ];
 
 export default function SobreNosContent() {
@@ -248,8 +241,18 @@ export default function SobreNosContent() {
             subtitle="Modelo de governança baseado na colegialidade e transparência."
           />
 
+          <FadeInUp>
+            <p className="max-w-4xl text-neutral-600 leading-relaxed mt-8 mb-12">
+              A estrutura organizacional do Instituto Rede de Apoio está definida
+              em seu Estatuto Social, assegurando modelo de governança baseado na
+              colegialidade, na segregação de funções, na responsabilidade
+              administrativa e no controle interno, com vistas à plena
+              conformidade normativa e à transparência institucional.
+            </p>
+          </FadeInUp>
+
           <motion.div
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16"
+            className="grid sm:grid-cols-2 gap-8 mt-4"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -267,6 +270,25 @@ export default function SobreNosContent() {
               </motion.div>
             ))}
           </motion.div>
+
+          <FadeInUp>
+            <div className="max-w-4xl space-y-5 text-neutral-600 leading-relaxed mt-12">
+              <p>
+                Para o desenvolvimento de suas atividades, o Instituto poderá
+                contar com estrutura técnica, administrativa e operacional
+                adequada à execução de seus programas e parcerias, observando
+                critérios de legalidade, eficiência, economicidade e
+                responsabilidade na gestão de recursos.
+              </p>
+              <p>
+                A governança institucional do Instituto Rede de Apoio está
+                estruturada de modo a assegurar equilíbrio entre deliberação
+                estratégica, gestão executiva e fiscalização interna, garantindo
+                conformidade jurídica, transparência e compromisso com os
+                princípios que regem sua atuação.
+              </p>
+            </div>
+          </FadeInUp>
         </div>
       </section>
 
@@ -289,17 +311,9 @@ export default function SobreNosContent() {
               <motion.div key={doc.title} variants={fadeInUp}>
                 <a
                   href={doc.href}
-                  target={doc.href !== "#" ? "_blank" : undefined}
-                  rel={doc.href !== "#" ? "noopener noreferrer" : undefined}
-                  className={`flex items-center gap-4 p-5 rounded-xl bg-white border border-neutral-200 hover:border-accent transition-colors group ${
-                    doc.href === "#" ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className="flex items-center gap-4 p-5 rounded-xl bg-white border border-neutral-200 hover:border-accent transition-colors group cursor-pointer"
                 >
-                  {doc.href !== "#" ? (
-                    <Download className="w-5 h-5 text-accent flex-shrink-0" />
-                  ) : (
-                    <FileText className="w-5 h-5 text-neutral-400 flex-shrink-0" />
-                  )}
+                  <FileText className="w-5 h-5 text-accent flex-shrink-0" />
                   <span className="text-sm font-medium text-primary">
                     {doc.title}
                   </span>
@@ -307,10 +321,6 @@ export default function SobreNosContent() {
               </motion.div>
             ))}
           </motion.div>
-
-          <p className="text-neutral-600 text-sm mt-6">
-            Demais documentos serão disponibilizados em breve.
-          </p>
         </div>
       </section>
 
