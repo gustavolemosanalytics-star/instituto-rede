@@ -9,9 +9,9 @@ const navItems = [
     textColor: "#fff",
     links: [
       {
-        label: "Sobre Nós",
+        label: "Institucional",
         href: "/institucional",
-        ariaLabel: "Conheça o Instituto",
+        ariaLabel: "Página Institucional",
       },
       {
         label: "Áreas de Atuação",

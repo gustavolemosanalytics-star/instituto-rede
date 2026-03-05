@@ -1,44 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { FileText, Upload, CheckCircle } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { FileText, ExternalLink, Download } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 import FadeInUp from "@/components/animations/FadeInUp";
 import StaggerContainer from "@/components/animations/StaggerContainer";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
 import PageHero from "@/components/shared/PageHero";
 
-const talentBankSchema = z.object({
-  nome: z.string().min(1, "Nome é obrigatório"),
-  email: z.string().min(1, "Email é obrigatório").email("Email inválido"),
-  telefone: z.string().min(1, "Telefone é obrigatório"),
-  areaInteresse: z.string().min(1, "Área de interesse é obrigatória"),
-});
-
-type TalentBankFormData = z.infer<typeof talentBankSchema>;
-
 export default function TrabalheConoscoContent() {
-  const [submitted, setSubmitted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<TalentBankFormData>({
-    resolver: zodResolver(talentBankSchema),
-  });
-
-  const onSubmit = (_data: TalentBankFormData) => {
-    setSubmitted(true);
-  };
-
   return (
     <>
       <PageHero title="Trabalhe Conosco" breadcrumb="Trabalhe Conosco" />
@@ -94,12 +65,12 @@ export default function TrabalheConoscoContent() {
         </div>
       </section>
 
-      {/* Editais */}
+      {/* Processo Seletivo */}
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
-            title="Lista de Editais"
-            subtitle="Confira os editais de processos seletivos vigentes."
+            title="Processo Seletivo"
+            subtitle="Confira o edital vigente e realize sua inscrição."
           />
 
           <StaggerContainer className="max-w-3xl mx-auto mt-12">
@@ -110,6 +81,28 @@ export default function TrabalheConoscoContent() {
                 </h3>
                 <div className="space-y-3">
                   <a
+                    href="/arquivos/Edital_Processo_Seletivo.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
+                  >
+                    <Download className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium text-neutral-700">
+                      Edital de Processo Seletivo
+                    </span>
+                  </a>
+                  <a
+                    href="https://forms.gle/bZxNZ3zj6K1Xixag7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-xl border border-accent/30 bg-accent/5 hover:bg-accent/10 transition-all group"
+                  >
+                    <ExternalLink className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-medium text-primary">
+                      Realizar inscrição
+                    </span>
+                  </a>
+                  <a
                     href="https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos/Edital_Chamamento_Termo_de_Colaboracao_Completo_errata_08_12_2025_1_.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -118,15 +111,6 @@ export default function TrabalheConoscoContent() {
                     <FileText className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-medium text-neutral-700">
                       Edital Nº 01/2026
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group opacity-50 cursor-not-allowed"
-                  >
-                    <FileText className="w-5 h-5 text-neutral-400 group-hover:scale-110 transition-transform" />
-                    <span className="text-sm font-medium text-neutral-700">
-                      Realizar inscrição
                     </span>
                   </a>
                   <a
@@ -147,86 +131,16 @@ export default function TrabalheConoscoContent() {
         </div>
       </section>
 
-      {/* Banco de Talentos */}
-      <section id="banco-de-talentos" className="py-28 bg-neutral-50">
+      {/* Closing */}
+      <section className="py-28 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <SectionHeading
-            title="Banco de Talentos"
-            subtitle="Interessados poderão cadastrar currículo para eventual participação em futuros processos seletivos, observadas as necessidades institucionais."
-          />
-
           <FadeInUp>
-            <div className="max-w-2xl mx-auto bg-white rounded-xl p-8 border border-neutral-200 mt-8">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <CheckCircle className="w-16 h-16 text-accent mx-auto mb-4" />
-                  <h3 className="font-heading text-2xl text-primary mb-2">
-                    Cadastro realizado com sucesso!
-                  </h3>
-                  <p className="text-neutral-600">
-                    Agradecemos seu interesse. Seu currículo será analisado
-                    conforme as necessidades institucionais.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  <Input
-                    label="Nome"
-                    placeholder="Seu nome completo"
-                    {...register("nome")}
-                    error={errors.nome?.message}
-                  />
-                  <Input
-                    label="E-mail"
-                    type="email"
-                    placeholder="seu@email.com"
-                    {...register("email")}
-                    error={errors.email?.message}
-                  />
-                  <Input
-                    label="Telefone"
-                    placeholder="(00) 00000-0000"
-                    {...register("telefone")}
-                    error={errors.telefone?.message}
-                  />
-                  <Input
-                    label="Área de interesse"
-                    placeholder="Ex: Educação, Saúde, Esporte..."
-                    {...register("areaInteresse")}
-                    error={errors.areaInteresse?.message}
-                  />
-
-                  {/* File Upload */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-medium text-neutral-700">
-                      Upload de currículo
-                    </label>
-                    <label className="flex items-center gap-3 w-full rounded-lg border border-dashed border-neutral-300 bg-neutral-50 px-4 py-4 text-sm cursor-pointer transition-all hover:border-accent hover:bg-accent/5">
-                      <Upload className="w-5 h-5 text-neutral-400" />
-                      <span className="text-neutral-500">
-                        Clique para selecionar seu currículo (PDF)
-                      </span>
-                      <input
-                        type="file"
-                        accept=".pdf,.doc,.docx"
-                        className="hidden"
-                      />
-                    </label>
-                  </div>
-
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Enviando..." : "Cadastrar currículo"}
-                  </Button>
-                </form>
-              )}
-            </div>
+            <p className="text-center text-neutral-500 text-sm max-w-2xl mx-auto">
+              O Instituto Rede de Apoio reafirma seu compromisso com a
+              transparência, a meritocracia e a valorização profissional na
+              composição de sua equipe técnica e administrativa.
+            </p>
           </FadeInUp>
-
-          <p className="text-center text-neutral-500 text-sm mt-8 max-w-2xl mx-auto">
-            O Instituto Rede de Apoio reafirma seu compromisso com a
-            transparência, a meritocracia e a valorização profissional na
-            composição de sua equipe técnica e administrativa.
-          </p>
         </div>
       </section>
     </>
