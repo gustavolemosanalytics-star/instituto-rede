@@ -88,7 +88,7 @@ export default function TrabalheConoscoContent() {
                   >
                     <Download className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-medium text-neutral-700">
-                      Edital de Processo Seletivo
+                      Edital
                     </span>
                   </a>
                   <a
@@ -99,31 +99,17 @@ export default function TrabalheConoscoContent() {
                   >
                     <ExternalLink className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-medium text-primary">
-                      Realizar inscrição
+                      Realizar Inscrição
                     </span>
                   </a>
-                  <a
-                    href="https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos/Edital_Chamamento_Termo_de_Colaboracao_Completo_errata_08_12_2025_1_.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
+                  <div
+                    className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-100 opacity-50 cursor-not-allowed"
                   >
-                    <FileText className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
-                    <span className="text-sm font-medium text-neutral-700">
-                      Edital Nº 01/2026
+                    <FileText className="w-5 h-5 text-neutral-400" />
+                    <span className="text-sm font-medium text-neutral-400">
+                      Resultado (em breve)
                     </span>
-                  </a>
-                  <a
-                    href="https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos/DOM_Resultado_Definitivo.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-xl border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
-                  >
-                    <FileText className="w-5 h-5 text-accent group-hover:scale-110 transition-transform" />
-                    <span className="text-sm font-medium text-neutral-700">
-                      Resultado
-                    </span>
-                  </a>
+                  </div>
                 </div>
               </Card>
             </motion.div>
