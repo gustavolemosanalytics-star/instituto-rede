@@ -196,10 +196,4 @@ export const offices = [
     city: "Salvador, Bahia",
     cep: "40.445-201",
   },
-  {
-    label: "Escritório 2",
-    address: "Avenida Tancredo Neves, nº 620, Sala 1110, Caminho das Árvores",
-    city: "Salvador, Bahia",
-    cep: "41.820-020",
-  },
 ];

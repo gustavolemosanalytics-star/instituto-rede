@@ -62,18 +62,6 @@ export default function Footer() {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-white/80 text-sm">
-                    Avenida Tancredo Neves, nº 620, Sala 1110, Caminho das
-                    Árvores
-                  </p>
-                  <p className="text-white/50 text-sm">
-                    Salvador, Bahia — CEP 41.820-020
-                  </p>
-                </div>
-              </div>
             </div>
           </motion.div>
 
