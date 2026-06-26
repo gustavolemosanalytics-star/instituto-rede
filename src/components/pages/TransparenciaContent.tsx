@@ -10,7 +10,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Card from "@/components/ui/Card";
 import PageHero from "@/components/shared/PageHero";
 
-const SUPABASE_STORAGE = "https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/arquivos";
+const SUPABASE_STORAGE = "https://cqrpbiepyeypbkizwacu.supabase.co/storage/v1/object/public/instituto-rede";
 
 const documentacaoInstitucional = [
   {
@@ -50,6 +50,21 @@ const termosColaboracaoLinks = [
   {
     title: "Portaria SME Nº 15/2026",
     href: `${SUPABASE_STORAGE}/PORTARIA_SME_N_15_2026_GESTORA_AVALIACAO_E_MONITORAMENTO.pdf`,
+  },
+];
+
+const termosFomentoLinks = [
+  {
+    title: "Publicação",
+    href: `${SUPABASE_STORAGE}/Publicacao_DOU_60_2025.pdf`,
+  },
+  {
+    title: "Termo de Fomento",
+    href: `${SUPABASE_STORAGE}/Termo_de_Fomento_60_2025.pdf`,
+  },
+  {
+    title: "Painel Parcerias",
+    href: `${SUPABASE_STORAGE}/Painel_Parcerias_985113.pdf`,
   },
 ];
 
@@ -171,13 +186,31 @@ export default function TransparenciaContent() {
             {/* Termos de Fomento */}
             <FadeInUp>
               <Card>
-                <h3 className="font-heading text-xl text-primary mb-3">
+                <h3 className="font-heading text-xl text-primary mb-4">
                   Termos de Fomento
                 </h3>
-                <p className="text-neutral-500 text-sm">
-                  Informações serão disponibilizadas conforme a formalização de
-                  novos instrumentos.
-                </p>
+
+                <div className="mb-4">
+                  <h4 className="text-base font-semibold text-neutral-700 mb-3">
+                    Termo de Fomento Ministério do Esporte nº 60/2025
+                  </h4>
+                  <div className="space-y-2">
+                    {termosFomentoLinks.map((item) => (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-lg border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
+                      >
+                        <Download className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm text-neutral-700">
+                          {item.title}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </Card>
             </FadeInUp>
 
