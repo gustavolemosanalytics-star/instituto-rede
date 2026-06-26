@@ -149,6 +149,17 @@ export default function CardNav({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded]);
 
+  const closeMenu = () => {
+    const tl = tlRef.current;
+    setIsHamburgerOpen(false);
+    if (!tl) {
+      setIsExpanded(false);
+      return;
+    }
+    tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
+    tl.reverse();
+  };
+
   const toggleMenu = () => {
     const tl = tlRef.current;
     if (!tl) return;
@@ -157,9 +168,7 @@ export default function CardNav({
       setIsExpanded(true);
       tl.play(0);
     } else {
-      setIsHamburgerOpen(false);
-      tl.eventCallback("onReverseComplete", () => setIsExpanded(false));
-      tl.reverse();
+      closeMenu();
     }
   };
 
@@ -228,10 +237,7 @@ export default function CardNav({
                     className="nav-card-link"
                     href={lnk.href}
                     aria-label={lnk.ariaLabel}
-                    onClick={() => {
-                      setIsHamburgerOpen(false);
-                      tlRef.current?.reverse();
-                    }}
+                    onClick={closeMenu}
                   >
                     <ArrowUpRight
                       className="nav-card-link-icon"
