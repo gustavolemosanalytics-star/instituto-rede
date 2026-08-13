@@ -196,4 +196,10 @@ export const offices = [
     city: "Salvador, Bahia",
     cep: "40.445-201",
   },
+  {
+    label: "Filial",
+    address: "Avenida Barros e Almeida, nº 107, Centro",
+    city: "Santo Antônio de Jesus, Bahia",
+    cep: "44.430-013",
+  },
 ];

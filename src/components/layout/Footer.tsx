@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Facebook, Linkedin, Youtube, Mail, MapPin } from "lucide-react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { offices } from "@/lib/constants";
 
 const socialLinks = [
   { icon: Instagram, href: "https://www.instagram.com/instituto.rede?igsh=MWh0OW80N2V5dDVyYw==", label: "Instagram" },
@@ -51,17 +52,17 @@ export default function Footer() {
           <motion.div variants={fadeInUp}>
             <h4 className="text-sm font-medium tracking-wide uppercase text-white/50 mb-5">Endereços</h4>
             <div className="space-y-5">
-              <div className="flex gap-3">
-                <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                <div>
-                  <p className="text-white/80 text-sm">
-                    Avenida Fernandes Da Cunha, nº 552, Mares
-                  </p>
-                  <p className="text-white/50 text-sm">
-                    Salvador, Bahia — CEP 40.445-201
-                  </p>
+              {offices.map((office) => (
+                <div key={office.label} className="flex gap-3">
+                  <MapPin className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-white/80 text-sm">{office.address}</p>
+                    <p className="text-white/50 text-sm">
+                      {office.city} — CEP {office.cep}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </motion.div>
 
@@ -72,10 +73,10 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-accent flex-shrink-0" />
                 <a
-                  href="mailto:rededeapoioinstituto@gmail.com"
+                  href="mailto:contato@institutorede.org.br"
                   className="text-white/70 text-sm hover:text-accent transition-colors"
                 >
-                  rededeapoioinstituto@gmail.com
+                  contato@institutorede.org.br
                 </a>
               </div>
             </div>

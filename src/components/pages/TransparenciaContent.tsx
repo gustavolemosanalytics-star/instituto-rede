@@ -28,7 +28,11 @@ const documentacaoInstitucional = [
 
 const termosColaboracaoLinks = [
   {
-    title: "Edital Chamamento Público",
+    title: "Edital de Chamamento Público Nº 001/2025",
+    href: `${SUPABASE_STORAGE}/Edital_Chamamento_Termo_de_Colaboracao_Completo.pdf`,
+  },
+  {
+    title: "Publicação Diário Oficial - Termo de Colaboração",
     href: `${SUPABASE_STORAGE}/REDE%20SAJ.pdf`,
   },
   {
@@ -50,6 +54,18 @@ const termosColaboracaoLinks = [
   {
     title: "Portaria SME Nº 15/2026",
     href: `${SUPABASE_STORAGE}/PORTARIA_SME_N_15_2026_GESTORA_AVALIACAO_E_MONITORAMENTO.pdf`,
+  },
+  {
+    title: "Termo de Colaboração Nº 002/2026",
+    href: `${SUPABASE_STORAGE}/Termo_de_Colaboracao_PROC_ADM_12_746_2025.pdf`,
+  },
+  {
+    title: "Termo de Alteração do Plano de Trabalho Nº 001/2026",
+    href: `${SUPABASE_STORAGE}/termo_de_alteracao_do_plano_de_trabalho_assinado_assinado.pdf`,
+  },
+  {
+    title: "Publicação Diário Oficial - Termo de Alteração do Plano de Trabalho",
+    href: `${SUPABASE_STORAGE}/APOSTILAMENTO%2017-07-2026.pdf`,
   },
 ];
 

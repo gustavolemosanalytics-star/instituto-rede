@@ -154,10 +154,10 @@ export default function ContatoContent() {
                 <div className="flex items-center gap-2 text-sm">
                   <Mail className="w-4 h-4 text-accent shrink-0" />
                   <a
-                    href="mailto:rededeapoioinstituto@gmail.com"
+                    href="mailto:contato@institutorede.org.br"
                     className="text-primary hover:text-accent transition-colors"
                   >
-                    rededeapoioinstituto@gmail.com
+                    contato@institutorede.org.br
                   </a>
                 </div>
               </div>
