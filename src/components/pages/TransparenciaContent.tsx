@@ -84,6 +84,13 @@ const termosFomentoLinks = [
   },
 ];
 
+const termosFomentoSalvadorLinks = [
+  {
+    title: "Termo de Fomento",
+    href: `${SUPABASE_STORAGE}/Termo_de_Fomento_001_2026_SMED_Salvador.pdf`,
+  },
+];
+
 export default function TransparenciaContent() {
   return (
     <>
@@ -212,6 +219,28 @@ export default function TransparenciaContent() {
                   </h4>
                   <div className="space-y-2">
                     {termosFomentoLinks.map((item) => (
+                      <a
+                        key={item.title}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-lg border border-neutral-100 bg-neutral-50 hover:border-accent/30 hover:bg-accent/5 transition-all group"
+                      >
+                        <Download className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="text-sm text-neutral-700">
+                          {item.title}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <h4 className="text-base font-semibold text-neutral-700 mb-3">
+                    Termo de Fomento SMED Salvador nº 001/2026
+                  </h4>
+                  <div className="space-y-2">
+                    {termosFomentoSalvadorLinks.map((item) => (
                       <a
                         key={item.title}
                         href={item.href}
